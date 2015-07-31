@@ -12,84 +12,81 @@
 <script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
 <script	src="js/bootstrap.min.js"></script>
 <script>
-$(document).ready(function() {	
-	oTable = $("#fashions").dataTable({
-		"bProcessing" : false,
-		"bServerSide" : false,
-		"sort" : "position",
-		"sAjaxSource" : "./InventoryTable",
-		"aoColumns" : [ {
-			"mData" : "type"
-		}, {
-			"mData" : "season"
-		}, {
-			"mData" : "style"
-		}, {
-			"mData" : "color"
-		}, {
-			"mData" : "length"
-		}, {
-			"mData" : "size"
-		}, {
-			"mData" : "designer"
-		}, {
-			"mData" : "locale"
-		}, {
-			"mData" : "inventoryid"
-		}, ],
-		"columnDefs" : [ {
-			"visible" : false,
-			"targets" : 8
-		} ]
+	$(document).ready(function() {	
+		oTable = $("#fashions").dataTable({
+			"bProcessing" : false,
+			"bServerSide" : false,
+			"sort" : "position",
+			"sAjaxSource" : "./InventoryTable",
+			"aoColumns" : [ {
+				"mData" : "type"
+			}, {
+				"mData" : "season"
+			}, {
+				"mData" : "style"
+			}, {
+				"mData" : "color"
+			}, {
+				"mData" : "length"
+			}, {
+				"mData" : "size"
+			}, {
+				"mData" : "designer"
+			}, {
+				"mData" : "locale"
+			}, {
+				"mData" : "inventoryid"
+			}, ],
+			"columnDefs" : [ {
+				"visible" : false,
+				"targets" : 8
+			} ]
+		});
+		var iid="";
+		$('#fashions tbody').on('click','tr',function(event)  {
+			$(oTable.fnSettings().aoData).each(function (){
+		   		 $(this.nTr).removeClass('row_selected');
+	      });
+		$(event.target.parentNode).addClass('row_selected');
+		var iPos = oTable.fnGetPosition( this );
+		var aData = oTable.fnGetData(iPos);
+		iid=aData.inventoryid;
+		console.warn("ID: "+iid);
+		});
+		$("#add-but").on('click', function() {
+			$.get("AddItem");
+		});
+		$("#edit-but").on('click', function() {	
+			 if (iid==""){
+				alert("Please select a row-item to edit...")
+			} else {
+				$.get("EditItem",{inventoryid:iid});
+			}	
+		});
+		$("#del-but").on('click', function() {
+			if (iid==""){
+				alert("Please select a row-item to delete...")
+			} else {
+				$.get("DeleteItem",{inventoryid:iid});
+			}	
+		}) 
 	});
-	var iid="";
-	
-	$('#fashions tbody').on('click','tr',function(event)  {
-		$(oTable.fnSettings().aoData).each(function (){
-	   		 $(this.nTr).removeClass('row_selected');
-      });
-	$(event.target.parentNode).addClass('row_selected');
-	var iPos = oTable.fnGetPosition( this );
-	var aData = oTable.fnGetData(iPos);
-	iid=aData.inventoryid;
-	console.warn("ID: "+iid);
-	});
-	/* $("#add-but").on('click', function() {
-		alert('Add button');
-	});
-	$("#edit-but").on('click', function() {
-		
-		 if (iid==""){
-			alert("Please select a row-item to edit...")
-		} else {
-			 $.get('#',{"mode":"edit","inventoryid":iid},function(responseText) {          
-				// window.location.reload( true );
-             });
-		}	
-	});
-	$("#del-but").on('click', function() {
-		alert('Delete');
-	}) */
-	
-});
-
 </script>
-
-<style>
-#mainForm {
-	margin-left: 8px;
-}
-td {
-	font-size: 10px;
-	padding: 6px 4px;
-}
-#but-grp {
-	left-margin: 15px;
-}
-.row_selected {
-	color: #6600ff;
-}
-</style>
+	<style>
+		#mainForm {
+			margin-left: 8px;
+		}
+		td {
+			font-size: 10px;
+			padding: 6px 4px;
+		}
+		#but-grp {
+			left-margin: 15px;
+		}
+		.row_selected {
+			color: #6600ff;
+		}
+	</style>
 </head>
 <body>
 	<form id="mainForm" action="">
