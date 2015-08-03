@@ -17,7 +17,6 @@ import javax.servlet.http.HttpServletResponse;
 
 
 @WebServlet(name="ItemAddServlet", urlPatterns={"/additem"})
-
 public class ItemAddServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
    

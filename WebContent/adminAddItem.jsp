@@ -1,10 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
- <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
- <title>Wendy's home</title>
+<title>Add Garment</title>
 <link rel="stylesheet" href="css/bootstrap.min.css"></link>
 <link rel="stylesheet" href="css/bootstrap-formhelpers.min.css"></link>
 <script	type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
@@ -59,7 +60,7 @@
 				<label class="control-label col-sm-2" for="sty">Style:</label>
 				<div class="col-sm-5">
 					<input type="text" class="form-control" id="sty" name="style"
-						placeholder="Business casual, casual dress, or dressy..." required></input>
+						placeholder="Business casual, casual dress, or dressy..."></input>
 				</div>
 			</div>
 			<div id="garmentdesc" class="form-group">

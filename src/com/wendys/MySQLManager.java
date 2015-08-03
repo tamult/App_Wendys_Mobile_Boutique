@@ -23,7 +23,7 @@ public class MySQLManager {
 	// NO PARAMETERS FOR THE QUERY
 	public ResultSet executeQuery(String query) throws SQLException {
 		PreparedStatement statement = prepSQL(query);
-		System.out.println(new Date()+ "No parameter query Query: " + statement.toString());
+		//System.out.println(new Date()+ "No parameter query Query: " + statement.toString());
 		ResultSet inventory = statement.executeQuery();
 		return inventory;
 	}
@@ -39,9 +39,9 @@ public class MySQLManager {
 	public ResultSet executeQuery(String query, int[] params) 
 			throws SQLException {
 		PreparedStatement statement = prepSQL(query, params);
-		System.out.println(new Date()+ " Query with Integer params: " + statement.toString());
+		//System.out.println(new Date()+ " Query with Integer params: " + statement.toString());
 		ResultSet inventory = statement.executeQuery();
-		System.out.println(new Date()+ "AFTER!!!!! Query with Integer params: " + statement.toString());
+		//System.out.println(new Date()+ "AFTER!!!!! Query with Integer params: " + statement.toString());
 		return inventory;
 	}
 	// END QUERIES //
@@ -90,7 +90,7 @@ public class MySQLManager {
 				i++;
 			}
 		}
-		System.out.println(new Date()+ "integer params for PrepSQL: " + statement.toString());
+		//System.out.println(new Date()+ "integer params for PrepSQL: " + statement.toString());
 		return statement;
 	}
 	// Prepare statement with STRING params
@@ -114,7 +114,7 @@ public class MySQLManager {
 		if (pool != null) {
 			this.conn = pool.getConnection();  
 		}
-		//System.out.println(new Date()+ " My openDB: " + conn.toString());
+		System.out.println(new Date()+ "***************** My openDB: " + conn.toString());
 		return conn;
 	}
 	// CLOSE DB

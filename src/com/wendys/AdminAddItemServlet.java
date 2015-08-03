@@ -28,22 +28,14 @@ public class AdminAddItemServlet extends HttpServlet {
 				System.out.println("Cannot access DB...");
 				return;
 			}
-			
 			try {
 				ResultSet rS;
 				String qStr;
 				qStr = "use Wendy";
 				dB.executeUpdate(qStr);
-
 				qStr = "select max inventoryid as bigid from inventory where archive='no' ";
-						
-				
 				rS = dB.executeQuery(qStr);	
-				if (rS.first())  {
-					
-					
-					
-					
+				if (rS.first())  {	
 				}
 				
 			} catch (SQLException e) {
