@@ -11,7 +11,7 @@ import java.util.Date;
  */
 public class MySQLManager {
 	private static ConnectionPool pool = null;  
-	private Connection conn = null;  
+	protected Connection conn = null;  
 	public MySQLManager() {
 		this.conn = openDB();
 	}
